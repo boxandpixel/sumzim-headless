@@ -7,7 +7,7 @@ import { ApolloClient, InMemoryCache, ApolloProvider, useQuery, gql } from '@apo
 
 
 const client = new ApolloClient({
-  uri: 'https://sumzimdev.wpengine.com/qraphql',
+  uri: 'https://sumzimdev.wpengine.com/graphql',
   cache: new InMemoryCache(),
   // credentials: 'include'
   // mode: 'no-cors'
@@ -25,7 +25,7 @@ const GET_LOCATIONS = gql`
   }
 `;
 
-function DisplayLocations() {
+function DisplayHome() {
   const { loading, error, data } = useQuery(GET_LOCATIONS);
 
   if (loading) return <p>Loading...</p>;
@@ -33,17 +33,16 @@ function DisplayLocations() {
   // Log any GraphQL errors or network error that occurred
 
 
-  return data.locations.map(({ pages }) => (
-    <p>{pages}</p>
-  ));
+  return data.title;
+
 }
 
 function Home() {
   return (
     <div>
-      test
+      Load GraphQL
       <ApolloProvider client={client}>
-        <DisplayLocations />
+        <DisplayHome />
       </ApolloProvider>
     </div>
   );
