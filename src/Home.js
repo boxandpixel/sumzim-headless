@@ -9,31 +9,113 @@ import { ApolloClient, InMemoryCache, ApolloProvider, useQuery, gql } from '@apo
 const client = new ApolloClient({
   uri: 'https://sumzimdev.wpengine.com/graphql',
   cache: new InMemoryCache(),
-  // credentials: 'include'
-  // mode: 'no-cors'
 });
 
-const GET_LOCATIONS = gql`
-  query MyQuery {
+const HomeContent = gql`
+  query HomeContent {
     pages(where: {id: 2}) {
-      edges {
-        node {
-          title
+      nodes {
+        template {
+          ... on Template_HomePage {
+            homePage {
+              heroHeadline
+              backgroundVideoMp4 {
+                mediaItemUrl
+              }
+              featuredCards {
+                featuredCardTitle
+                featuredCardImage {
+                  mediaItemUrl
+                }
+                featuredCardDetail
+                featuredCardLink {
+                  title
+                  url
+                }
+              }
+              serviceIcons {
+                serviceIcon {
+                  mediaItemUrl
+                }
+                serviceLink {
+                  title
+                  url
+                }
+              }
+              theDifferenceCards {
+                theDifferenceCardTitle
+                theDifferenceCardImage {
+                  id
+                }
+                theDifferenceCardDetail
+              }
+              staffHeading
+              staffLink {
+                title
+                url
+              }
+              circleFeatures {
+                circleHeading
+                circleDetail
+                circleLink {
+                  url
+                  title
+                }
+              }
+              contentFeaturesHeading
+              contentFeaturesIntroduction
+              contentFeaturesSlides {
+                contentFeaturesSlidesHeading
+                contentFeaturesSlidesDetail
+                contentFeaturesSlidesLink {
+                  title
+                  url
+                }
+              }
+              contentFeaturesAddendum
+              brandsHeading
+              brandsIntroduction
+              brandLogos {
+                brandLogo {
+                  mediaItemUrl
+                }
+              }
+            }
+          }
         }
-      } 
+      }
     }
   }
 `;
 
-function DisplayHome() {
-  const { loading, error, data } = useQuery(GET_LOCATIONS);
+function DisplayHero() {
+  const { loading, error, data } = useQuery(HomeContent);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
-  // Log any GraphQL errors or network error that occurred
+
+  const homePage = data.pages.nodes[0].template.homePage;
 
 
-  return data.title;
+  const heroHeadline = homePage.heroHeadline;
+  // const featuredCards = homePage.featuredCards.map(() => {
+
+  // })
+
+  return (
+    <>
+      <h1>{heroHeadline}</h1>
+    </>
+  )
+
+
+
+  // return data.pages.edges.map(({ node }) => {
+  //   return (
+  //     <><h1 key="{node.title}">{node.title}</h1></>
+  //   )
+  // })
+  // return console.log(homePage)
 
 }
 
@@ -42,7 +124,7 @@ function Home() {
     <div>
       Load GraphQL
       <ApolloProvider client={client}>
-        <DisplayHome />
+        <DisplayHero />
       </ApolloProvider>
     </div>
   );
