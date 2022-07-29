@@ -1,24 +1,33 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
+import { ApolloClient, InMemoryCache, ApolloProvider, HttpLink, from } from '@apollo/client';
+import { onError } from '@apollo/client/link/error';
+import HomePage from './components/HomePage';
+
+const errorLink = onError(({ graphQLErrors, networkError }) => {
+  if (graphQLErrors) {
+    graphQLErrors.map(({ message, location, path }) => {
+      console.log(`GraphQL Error: ${message}, ${location}, ${path}`)
+    })
+  }
+})
+
+const link = from([
+  errorLink,
+  new HttpLink({ uri: 'https://sumzimdev.wpengine.com/graphql' }),
+])
+
+const client = new ApolloClient({
+  cache: new InMemoryCache(),
+  link: link,
+});
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ApolloProvider client={client}>
+      <HomePage />
+    </ApolloProvider>
   );
 }
 

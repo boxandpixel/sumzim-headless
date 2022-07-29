@@ -1,17 +1,6 @@
-// import { useQuery, gql } from '@apollo/client';
-import { ApolloClient, InMemoryCache, ApolloProvider, useQuery, gql } from '@apollo/client';
-// import { onError } from "@apollo/client/link/error";
+import { gql } from '@apollo/client';
 
-
-
-
-
-const client = new ApolloClient({
-  uri: 'https://sumzimdev.wpengine.com/graphql',
-  cache: new InMemoryCache(),
-});
-
-const HomeContent = gql`
+export const LOAD_HOME = gql`
   query HomeContent {
     pages(where: {id: 2}) {
       nodes {
@@ -23,15 +12,7 @@ const HomeContent = gql`
                 mediaItemUrl
               }
               featuredCards {
-                featuredCardTitle
-                featuredCardImage {
-                  mediaItemUrl
-                }
-                featuredCardDetail
-                featuredCardLink {
-                  title
-                  url
-                }
+                ... homeFeatured
               }
               serviceIcons {
                 serviceIcon {
@@ -86,48 +67,16 @@ const HomeContent = gql`
       }
     }
   }
+
+  fragment homeFeatured on Template_HomePage_Homepage_featuredCards {
+    featuredCardTitle
+    featuredCardImage {
+      mediaItemUrl
+    }
+    featuredCardDetail
+    featuredCardLink {
+      title
+      url
+    }
+  }
 `;
-
-function DisplayHero() {
-  const { loading, error, data } = useQuery(HomeContent);
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
-
-  const homePage = data.pages.nodes[0].template.homePage;
-
-
-  const heroHeadline = homePage.heroHeadline;
-  // const featuredCards = homePage.featuredCards.map(() => {
-
-  // })
-
-  return (
-    <>
-      <h1>{heroHeadline}</h1>
-    </>
-  )
-
-
-
-  // return data.pages.edges.map(({ node }) => {
-  //   return (
-  //     <><h1 key="{node.title}">{node.title}</h1></>
-  //   )
-  // })
-  // return console.log(homePage)
-
-}
-
-function Home() {
-  return (
-    <div>
-      Load GraphQL
-      <ApolloProvider client={client}>
-        <DisplayHero />
-      </ApolloProvider>
-    </div>
-  );
-}
-
-export default Home;
