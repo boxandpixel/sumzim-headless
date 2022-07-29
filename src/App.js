@@ -7,7 +7,7 @@ import HomePage from './components/HomePage';
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
     graphQLErrors.map(({ message, location, path }) => {
-      console.log(`GraphQL Error: ${message}, ${location}, ${path}`)
+      return console.log(`GraphQL Error: ${message}, ${location}, ${path}`)
     })
   }
 })
