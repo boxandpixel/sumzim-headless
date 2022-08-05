@@ -26,7 +26,8 @@ export const LOAD_HOME = gql`
               theDifferenceCards {
                 theDifferenceCardTitle
                 theDifferenceCardImage {
-                  id
+                  id,
+                  mediaItemUrl
                 }
                 theDifferenceCardDetail
               }
@@ -78,5 +79,25 @@ export const LOAD_HOME = gql`
       title
       url
     }
+  }
+`;
+
+export const LOAD_HEADER = gql`
+  query HeaderContent {
+    headerUpdate {
+      headerContent {
+          logo {
+            id
+            mediaItemUrl
+          }
+          logoMinified {
+            id
+            mediaItemUrl
+          }
+          yearsOfExperience {
+            mediaItemUrl
+          }
+        }
+      }
   }
 `;

@@ -3,6 +3,7 @@ import './App.css';
 import { ApolloClient, InMemoryCache, ApolloProvider, HttpLink, from } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
 import HomePage from './components/HomePage';
+import HeaderContent from './components/HeaderContent';
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
@@ -26,6 +27,7 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
+      <HeaderContent />
       <HomePage />
     </ApolloProvider>
   );

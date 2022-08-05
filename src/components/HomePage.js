@@ -1,6 +1,8 @@
 import HomeFeaturedCards from './HomeFeaturedCards';
 import HomeHeroHeadline from './HomeHeroHeadline';
 import HomeServiceIcons from './HomeServiceIcons';
+import HomeTheDifference from './HomeTheDifference';
+import HomeCircleFeatures from './HomeCircleFeatures';
 
 
 
@@ -15,6 +17,8 @@ function HomePage() {
       <HomeHeroHeadline />
       <HomeFeaturedCards />
       <HomeServiceIcons />
+      <HomeTheDifference />
+      <HomeCircleFeatures />
     </>
   )
 
