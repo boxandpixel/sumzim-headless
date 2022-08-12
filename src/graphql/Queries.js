@@ -101,3 +101,47 @@ export const LOAD_HEADER = gql`
       }
   }
 `;
+
+export const LOAD_MENU = gql`
+query MyQuery3 {
+  menus {
+    nodes {
+      id
+      databaseId
+      name
+      menuItems(first: 100) {
+        edges {
+          node {
+            id
+            label
+            parentId
+            url
+            childItems {
+              edges {
+                node {
+                  label
+                  url
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`;
+
+export const LOAD_STAFF = gql`
+query GetStaff {
+  allStaff(first:100) {
+    nodes {
+      title
+      staff {
+        thumbnailImage {
+          mediaItemUrl
+        }
+      }
+    }
+  }
+}`

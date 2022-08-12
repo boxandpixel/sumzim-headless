@@ -1,4 +1,3 @@
-// import { useQuery, gql } from '@apollo/client';
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import { LOAD_HOME } from '../graphql/Queries';

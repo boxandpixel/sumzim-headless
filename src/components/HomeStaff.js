@@ -1,0 +1,34 @@
+// import { useQuery, gql } from '@apollo/client';
+import React from 'react';
+import { useQuery } from '@apollo/client';
+import { LOAD_HOME } from '../graphql/Queries';
+import Staff from './Staff';
+// https://www.npmjs.com/package/react-multi-carousel
+
+
+function HomeStaff() {
+    const { loading, error, data } = useQuery(LOAD_HOME);
+
+    if (loading) return <p>Loading...</p>;
+    if (error) return console.log(`Error: ${error.message}`);
+
+    console.log(data);
+
+    const staffHeading = data.pages.nodes[0].template.homePage.staffHeading;
+    const staffLink = data.pages.nodes[0].template.homePage.staffLink;
+
+    return (
+        <>
+        <h1>{staffHeading}</h1>
+        <Staff />
+        {staffLink.title}
+        {staffLink.url}
+        
+        {/* {data.pages.nodes[0].template.homePage.brandLogos.map(({ brandLogo }) => {
+            return <img src={brandLogo.mediaItemUrl} alt="" />
+        })}   */}
+        </>      
+    )
+}
+
+export default HomeStaff;
