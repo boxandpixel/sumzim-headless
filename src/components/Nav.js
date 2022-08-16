@@ -2,6 +2,7 @@ import React from 'react';
 import { useQuery } from '@apollo/client';
 import { LOAD_MENU } from '../graphql/Queries';
 import MenuItems from './MenuItems';
+import NavStyles from './Nav.module.scss';
 
 function Nav() {
     const { loading, error, data } = useQuery(LOAD_MENU);
@@ -12,28 +13,16 @@ function Nav() {
     console.log(data);
 
     return (
-        <nav>
-        <ul>
-            {data.menus.nodes[0].menuItems.edges.filter(({node}) => node.parentId === null).map(({node}) => {
-                return <MenuItems items={node} />
-            })}
-        </ul>
+        <nav className={NavStyles.header__nav}>
+            <div className={NavStyles.menuPrimaryNavigationContainer}>
+            <ul className={NavStyles.menuPrimaryNavigation}>
+                {data.menus.nodes[0].menuItems.edges.filter(({node}) => node.parentId === null).map(({node}) => {
+                    return <MenuItems items={node} />
+                })}
+            </ul>
+            </div>
         </nav>
     )
-
-    // return data.menus.nodes[0].menuItems.edges.map(({ node }) => {
-    //     return (
-    //         <>
-        
-    //             <ul>
-    //                 <li>
-    //                     <MenuItems items={node} />
-    //                 </li>
-    //             </ul>
-                
-    //         </>
-    //     )
-    // });
 }
 
 export default Nav;

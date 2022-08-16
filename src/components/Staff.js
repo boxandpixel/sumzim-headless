@@ -2,7 +2,8 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import { LOAD_STAFF } from '../graphql/Queries';
-// https://www.npmjs.com/package/react-multi-carousel
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 
 
 function Staff() {
@@ -13,21 +14,68 @@ function Staff() {
 
     console.log(data);
 
-    return (
-        <>
-
-        
-        {data.allStaff.nodes.map(({ staff, title, }) => {
-            return (
-                <>
-                <div key={staff}>
-                <h3>{title}</h3>
+    const isFeatured = data.allStaff.nodes.filter(({staff}) => staff.isFeatured === true).map(({staff, title}) => {
+        return (
+            <>
+            <div key={staff}>
                 <img src={staff.thumbnailImage.mediaItemUrl} alt="" />
-                </div>
-                </>
-            )
-        })}  
-        </>      
+                <h3>{title}</h3>
+            </div>                 
+            </>
+        )
+    });  
+
+    const isWOF = data.allStaff.nodes.filter(({staff}) => staff.isWallOfFame !== null).map(({staff, title}) => {
+        return (
+            <>
+            <div key={staff}>
+                <img src={staff.thumbnailImage.mediaItemUrl} alt="" />
+                <h3>{title}</h3>
+            </div>                 
+            </>
+        )            
+    })
+
+    const isNotFeaturedNotWOF = data.allStaff.nodes.filter(({staff}) => staff.isWallOfFame === null && staff.isFeatured !== true).map(({staff, title}) => {
+        return (
+            <>
+            <div key={staff}>
+                <img src={staff.thumbnailImage.mediaItemUrl} alt="" />
+                <h3>{title}</h3>
+            </div>                 
+            </>
+        )
+    })
+
+    const responsive = {
+        superLargeDesktop: {
+            breakpoint: { max: 4000, min: 3000 },
+            items: 6,
+            slidesToSlide: 6
+        },
+        desktop: {
+            breakpoint: { max: 3000, min: 1024 },
+            items: 6,
+            slidesToSlide: 6
+        },
+        tablet: {
+            breakpoint: { max: 1024, min: 464 },
+            items: 4,
+            slidesToSlide: 4
+        },
+        mobile: {
+            breakpoint: { max: 464, min: 0 },
+            items: 2,
+            slidesToSlide: 2
+        }
+    };    
+
+    return (
+        <Carousel responsive={responsive}>
+            {isFeatured}
+            {isNotFeaturedNotWOF}
+            {isWOF}
+        </Carousel>
     )
 }
 

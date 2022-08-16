@@ -141,7 +141,21 @@ query GetStaff {
         thumbnailImage {
           mediaItemUrl
         }
+        isFeatured
+        isWallOfFame
       }
     }
-  }
+  } 
 }`
+
+export const LOAD_FOOTER = gql`
+query GetFooter {
+  footerContent {
+    footerContent {
+      addressInformation
+      ancillaryInformation
+      fieldGroupName
+    }
+  }
+}
+`

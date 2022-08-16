@@ -15,7 +15,7 @@ function HomeTheDifference() {
             <>
                 <h3>{theDifferenceCardTitle}</h3>
                 <img src={theDifferenceCardImage.mediaItemUrl} alt="" />
-                {theDifferenceCardDetail}
+                <div dangerouslySetInnerHTML={{__html: theDifferenceCardDetail}}></div>
             </>
         )
     });

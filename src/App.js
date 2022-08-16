@@ -4,9 +4,13 @@ import { ApolloClient, InMemoryCache, ApolloProvider, HttpLink, from } from '@ap
 import { onError } from '@apollo/client/link/error';
 import HomePage from './components/HomePage';
 import HeaderContent from './components/HeaderContent';
-import Nav from './components/Nav';
-import HeaderTime from './components/HeaderTime';
-import YearsOfExperience from './components/YearsOfExperience';
+import FooterContent from './components/FooterContent';
+import "@fontsource/raleway/300.css";
+import "@fontsource/raleway/300.css";
+import "@fontsource/raleway/400.css";
+import "@fontsource/raleway/600.css";
+import "@fontsource/raleway/700.css";
+import './styles.scss';
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
@@ -30,11 +34,9 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <HeaderTime />
-      <YearsOfExperience />
       <HeaderContent />
-      <Nav />
       <HomePage />
+      <FooterContent />
     </ApolloProvider>
   )
 }

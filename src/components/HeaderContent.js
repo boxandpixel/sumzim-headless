@@ -1,20 +1,23 @@
 // import { useQuery, gql } from '@apollo/client';
 import React from 'react';
-import { useQuery } from '@apollo/client';
-import { LOAD_HEADER } from '../graphql/Queries';
+import Nav from './Nav';
+import HeaderStatusMessage from './HeaderStatusMessage';
+import YearsOfExperience from './YearsOfExperience';
+import HeaderLogo from './HeaderLogo';
+import '../variables.scss';
+import HeaderStyles from './HeaderContent.module.css';
 
 
 function HeaderContent() {
-    const { loading, error, data } = useQuery(LOAD_HEADER);
-
-    if (loading) return <p>Loading...</p>;
-    if (error) return console.log(`Error: ${error.message}`);
-
-    const logo = data.headerUpdate.headerContent.logo.mediaItemUrl;
     return (
-        <>
-            <img src={logo} alt="" />
-        </>
+        <header className={HeaderStyles.site__header}>
+            <HeaderStatusMessage />
+            <div className={HeaderStyles.headerNavBadge}>
+                <Nav />
+                <HeaderLogo />
+                <YearsOfExperience />
+            </div>
+        </header>
     )
 }
 

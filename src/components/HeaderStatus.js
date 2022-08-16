@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
-// import {date} from '../Utils';
+import HeaderStatusStyles from './HeaderStatus.module.scss';
 
-function TimeMessage() {
+function HeaderStatus() {
     const date = new Date();
     const [ time, setTime ] = useState(date);
 
@@ -63,7 +63,7 @@ function TimeMessage() {
     // Display messsage based on current day and time
     const displayMessage = (currDay, currHour) => {
         const officeClosed = " our on-call staff is here to assist you";
-        const officeOpen = " our office is now open";
+        const officeOpen = " our office is open";
 
         if(currDay === 1 ||
             currDay === 2 || 
@@ -93,11 +93,20 @@ function TimeMessage() {
 
 
     return (
-        <>
-        <span key={time}>It's {dayToString(currDay)} at {state.loc} and </span>
-        {displayMessage(currDay,currHour)}
-        </>
+        <div className={HeaderStatusStyles.header__status}>
+            <div className={HeaderStatusStyles.header__statusMessage}>
+                <span key={time} className={HeaderStatusStyles.header__statusMessageTime}>It's {dayToString(currDay)} at {state.loc} and 
+                {displayMessage(currDay,currHour)}
+                </span>
+                <div className={HeaderStatusStyles.header__statusMessagePhoneBookContainer}>
+                    <span className={HeaderStatusStyles.header__statusMessagePhone}>
+                        <span className={HeaderStatusStyles.header__statusMessagePhoneCall}>Call for service</span> 
+                        <a href="tel:6105935129" class={HeaderStatusStyles.header__phoneNumber}> (610) 593-5129</a>
+                    </span>
+                </div>
+            </div>
+        </div>
     )
 }
 
-export default TimeMessage;
+export default HeaderStatus;

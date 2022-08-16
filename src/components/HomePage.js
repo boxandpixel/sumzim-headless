@@ -5,11 +5,7 @@ import HomeTheDifference from './HomeTheDifference';
 import HomeCircleFeatures from './HomeCircleFeatures';
 import HomeBrands from './HomeBrands';
 import HomeStaff from './HomeStaff';
-
-
-
-
-
+import HomeContentFeatures from './HomeContentFeatures';
 
 
 // Template_HomePage_Homepage
@@ -22,6 +18,7 @@ function HomePage() {
       <HomeTheDifference />
       <HomeStaff />
       <HomeCircleFeatures />
+      <HomeContentFeatures />
       <HomeBrands />
     </>
   )

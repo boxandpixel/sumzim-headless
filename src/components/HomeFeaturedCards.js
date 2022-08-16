@@ -14,7 +14,7 @@ function HomeFeaturedCards() {
             <>
                 <h3>{featuredCardTitle}</h3>
                 <img src={featuredCardImage.mediaItemUrl} alt="" />
-                {featuredCardDetail}
+                <div dangerouslySetInnerHTML={{__html: featuredCardDetail}}></div>
                 <a href={featuredCardLink.url}>{featuredCardLink.title}</a>
             </>
         )

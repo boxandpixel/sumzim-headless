@@ -18,7 +18,7 @@ function HomeBrands() {
     return (
         <>
         <h1>{brandsHeading}</h1>
-        {brandsIntroduction}
+        <div dangerouslySetInnerHTML={{__html: brandsIntroduction}}></div>
         
         {data.pages.nodes[0].template.homePage.brandLogos.map(({ brandLogo }) => {
             return <img src={brandLogo.mediaItemUrl} alt="" />

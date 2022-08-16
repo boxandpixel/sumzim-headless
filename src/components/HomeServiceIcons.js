@@ -12,9 +12,10 @@ function HomeServiceIcons() {
 
     return data.pages.nodes[0].template.homePage.serviceIcons.map(({ serviceIcon, serviceLink }) => {
         return (
-            <>
+            <div>
                 <a href={serviceLink.url}><img key={serviceIcon.mediaItemUrl} src={serviceIcon.mediaItemUrl} alt="" /></a>
-            </>
+                <span>{serviceLink.title}</span>
+            </div>
         )
     });
 }

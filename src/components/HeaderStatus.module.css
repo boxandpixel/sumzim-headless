@@ -1,0 +1,154 @@
+.header__status {
+    padding: var(--component__padding);
+    background: var(--color__primary);
+    position: relative;
+    min-height: 3.3rem;
+    
+    @include breakpoint(xlarge) {
+        min-height: 3.3rem;
+    }
+
+    &.header__status--mobile {
+        position: static;
+    }
+
+    .header__status-message {
+        width: 70vw;
+
+        @include breakpoint(large) {
+            width: 100%;
+        }
+
+        span {
+            font-weight: 600;
+            letter-spacing: var(--letter-spacing);
+            font-size: 1rem;
+
+            @include breakpoint(medium) {
+                font-size: 1.5rem;
+            }
+
+            &.header__status-message-time {
+                color: var(--color__secondary);
+
+                @include breakpoint(xlarge_nav) {
+                    display: inline-block;
+                    width: 35%;
+                }
+
+                &.header__status-message-time--hide {
+                    display: none;
+                }
+            }
+        }
+        
+        & > .header__status-message-phone-book-container {
+            position: absolute;
+            top: 50%;
+            position: relative;
+            z-index: 9999;
+
+            @include breakpoint(medium) {
+                position: static;
+                top: 0;
+            }
+
+            &.header__status-message-phone-book-container--show {
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 9999;
+                width: 60vw;
+                margin-left: calc(40vw / 2);
+                padding-top: 2rem;
+                display: none;
+
+                span {
+                    font-size: 0.875rem;
+                    color: white;
+                }
+
+                & > .header__status-message-book {
+                    display: block;
+                    color: white;
+                
+                    & > button {
+                        color: white;
+                        border: none;
+                        background: none;
+                        text-decoration: underline;
+                        text-transform: lowercase;
+                        margin: 0;
+                        padding: 0 0 0 0.5rem;
+                    }
+                
+                    @include breakpoint(large) {
+                        display: none;
+                    }
+                
+                    &.header__status-message-book--hide {
+                        display: none;
+                    } 
+                }
+            }
+
+            & > .header__status-message-phone {
+                color: white;
+                display: block;
+            
+                @include breakpoint(large) {
+                    display: inline;
+                    font-size: 1.5rem;
+                    margin-top: var(--spacer);
+                }
+            
+                & > a {
+                    color: white;
+                    text-decoration: underline;
+            
+                    @include breakpoint(large) {
+                        text-decoration: none;
+                    }
+                }
+            
+                &.header__status-message-phone--pad {
+                    padding-left: 5rem;
+                    margin-top: 0.5rem;
+            
+                    @include breakpoint(medium) {
+                        padding-left: 6rem;
+                        margin-top: 0;
+                    }
+                }
+            
+                .header__status-message-phone-call--hide {
+                    display: none;
+                } 
+            }
+
+        
+            & > .header__status-message-book {
+                display: none;
+                // color: white;
+            
+                // & > button {
+                //     color: white;
+                //     border: none;
+                //     background: none;
+                //     text-decoration: underline;
+                //     text-transform: lowercase;
+                //     margin: 0;
+                // }
+            
+                // @include breakpoint(large) {
+                //     display: none;
+                // }
+
+                // &.header__status-message-book--hide {
+                //     display: none;
+                // } 
+            }
+        
+        }
+    }
+}

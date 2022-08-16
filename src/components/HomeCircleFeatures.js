@@ -15,7 +15,7 @@ function HomeCircleFeatures() {
         return (    
             <>
                 <h3>{circleHeading}</h3>
-                {circleDetail}
+                <div dangerouslySetInnerHTML={{__html: circleDetail}}></div>
                 <a href={circleLink.url}>{circleLink.title}</a>
             </>
         )
