@@ -1,0 +1,23 @@
+@import '../mixins.scss';
+
+.site__header {
+    position: fixed;
+    width: 100vw;
+    z-index: 9999;
+
+  .headerContent {
+    padding: var(--section__padding);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse; // added 20220817
+
+    .header__navBadge {
+        order: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+  }    
+}
+

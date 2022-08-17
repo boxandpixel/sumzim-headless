@@ -1,8 +1,9 @@
 import React from 'react';
+import NavStyles from './Nav.module.scss';
 
 function NavDropdown({ submenu }) {
     return (
-        <ul className="dropdown">
+        <ul className={NavStyles.subMenu}>
             {submenu.childItems.edges.map(({node}) => {
                 return (
                     <>

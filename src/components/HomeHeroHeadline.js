@@ -2,6 +2,7 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import { LOAD_HOME } from '../graphql/Queries';
+import HomeHeroStyles from './HomeHeroHeadline.module.scss';
 
 
 function HomeHeroHeadline() {
@@ -12,9 +13,9 @@ function HomeHeroHeadline() {
 
     const heroHeadline = data.pages.nodes[0].template.homePage.heroHeadline;
     return (
-        <>
+        <div className={HomeHeroStyles.home__hero}>
             <h1>{heroHeadline}</h1>
-        </>
+        </div>
     )
 }
 

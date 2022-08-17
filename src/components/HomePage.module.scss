@@ -1,0 +1,32 @@
+@import "../mixins.scss";
+
+.home__section {
+    position: relative;
+    z-index: 2;
+    padding: 4rem 0;
+
+    &:nth-of-type(1) {
+        padding: 18rem 0 4rem 0;
+    }
+}
+
+/** Background Media */
+.home__background-media {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+
+    video {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+        object-fit: cover;
+    }
+}

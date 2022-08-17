@@ -2,6 +2,7 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import { LOAD_HEADER } from '../graphql/Queries';
+import HeaderLogoStyles from './HeaderLogo.module.scss';
 
 
 function HeaderLogo() {
@@ -13,7 +14,11 @@ function HeaderLogo() {
     const logo = data.headerUpdate.headerContent.logo.mediaItemUrl;
     return (
         <>
-            <img src={logo} alt="" />
+            <div className={HeaderLogoStyles.headerBrand}>
+                <a href="/">
+                    <img src={logo} alt="" className={HeaderLogoStyles.header__brandLogo} />
+                </a>
+            </div>
         </>
     )
 }

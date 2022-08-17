@@ -1,0 +1,41 @@
+@import "../mixins.scss";
+
+.home__featuredCards {
+    display: flex;
+    flex-direction: column;
+    padding: 0 10vw;
+
+    @include breakpoint(medium) {
+        flex-direction: row;
+        padding: 0;
+        
+    }
+
+    @include breakpoint(large) {
+        flex-direction: row;
+        padding: 0 10vw;
+    }
+
+    & > .home__featuredCard {
+        margin: 0 var(--spacer) 2rem;
+        border-radius: var(--border-radius);
+        // flex: 1 1 0;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        @include breakpoint(small) {
+            max-width: 60vw;
+            margin: var(--spacer) auto;
+        }
+        
+        @include breakpoint(medium) {
+            margin: 0 var(--spacer) 0;
+        }
+
+        img {
+            object-fit: contain;
+        }
+    }
+}

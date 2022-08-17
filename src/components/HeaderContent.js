@@ -2,10 +2,10 @@
 import React from 'react';
 import Nav from './Nav';
 import HeaderStatusMessage from './HeaderStatusMessage';
-import YearsOfExperience from './YearsOfExperience';
+import HeaderBadge from './HeaderBadge';
 import HeaderLogo from './HeaderLogo';
 import '../variables.scss';
-import HeaderStyles from './HeaderContent.module.css';
+import HeaderStyles from './HeaderContent.module.scss';
 
 
 function HeaderContent() {
@@ -14,8 +14,10 @@ function HeaderContent() {
             <HeaderStatusMessage />
             <div className={HeaderStyles.headerNavBadge}>
                 <Nav />
+                <div className={HeaderStyles.headerContent}>
                 <HeaderLogo />
-                <YearsOfExperience />
+                <HeaderBadge />
+                </div>
             </div>
         </header>
     )

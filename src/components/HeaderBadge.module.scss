@@ -1,0 +1,47 @@
+@import "../mixins.scss";
+
+
+.header__badge {
+    width: 5rem;
+    height: 5rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: var(--spacer);
+
+    @include breakpoint(large) {
+        width: 7rem;
+        height: 7rem;
+    }
+
+    &.header__badge--hide {
+        display: none;
+    }
+
+    .header__years {
+        font-size: 2rem;
+        font-weight: 700;
+        display: block;
+        color: var(--color__primary);
+        transform: translateY(5px);
+
+        @include breakpoint(large) {
+            font-size: 2.75rem;
+            transform: translateY(7px);
+        }
+    }
+
+    .header__yearsDuration {
+        transform: translateY(2rem);
+        color: var(--color__primary);
+        font-weight: 700;
+        background: hsla(0, 100%, 100%, 0.75);
+        border-radius: var(--border-radius);
+        font-size: 0.8rem;
+
+        @include breakpoint(large) {
+            font-size: 1rem;
+            transform: translateY(2.75rem);
+        }
+    }
+}   

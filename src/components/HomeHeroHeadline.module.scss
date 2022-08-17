@@ -1,0 +1,16 @@
+@import "../mixins.scss";
+
+.home__hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & > h1 {
+        text-align: center;
+        width: 70vw;
+        margin-bottom: 2.5rem;
+        text-shadow: 2px 2px 2px black;
+        font-weight: 700;
+        color: white;
+    }
+}

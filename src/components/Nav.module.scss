@@ -1,8 +1,31 @@
 @import '../mixins.scss';
 
 nav.header__nav {
-  display: flex;
-  justify-content: flex-end;
+    display: none;
+
+    // Mobile Nav
+    &.header__nav--show {
+        display: block;
+    }
+
+    @include breakpoint(xlarge) {
+        display: flex;
+        margin-right: 1rem;
+    }
+
+    @include breakpoint(xlarge_nav) {
+        position: absolute;
+        top: 24px;
+        right: 0;
+    }
+
+    &.header__nav--min {
+        @include breakpoint(xlarge) {
+        position: absolute;
+        top: 7px;
+        right: var(--spacer);
+        }
+    }
 
   &.header__nav--show {
     button {
@@ -134,10 +157,10 @@ nav.header__nav {
         }
       }
 
-      & > li.menu-item-has-children {
+      & > li.menuItemHasChildren {
         position: relative;
 
-        .sub-menu {
+        .subMenu {
           @include breakpoint(large) {
             position: absolute;
             left: 0;
@@ -169,7 +192,7 @@ nav.header__nav {
         }
       }
 
-      & > li.menu-item-has-children:hover > .sub-menu {
+      & > li.menuItemHasChildren:hover > .subMenu {
         @include breakpoint(xlarge) {
           display: block;
         }

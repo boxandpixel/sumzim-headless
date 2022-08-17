@@ -1,0 +1,41 @@
+@import "../mixins.scss";
+
+
+    .headerBrand {
+      order: 1;
+      justify-content: flex-start;
+
+      a {
+        display: block;
+
+        img {
+          &.header__brandLogo {
+            width: 110px;
+
+            @include breakpoint(large) {
+              width: 180px;
+            }
+
+            &.header__brand-logo--hide {
+              display: none;
+            }
+          }
+
+          &.header__brand-logo-min {
+            width: 4rem;
+            position: absolute;
+            top: 0.75rem;
+            left: var(--gutter);
+            display: none;
+
+            @include breakpoint(medium) {
+              width: 4.5rem;
+            }
+
+            &.header__brand-logo-min--show {
+              display: block;
+            }
+          }
+        }
+      }
+    }
