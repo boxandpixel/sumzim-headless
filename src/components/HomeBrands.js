@@ -2,6 +2,7 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import { LOAD_HOME } from '../graphql/Queries';
+import HomeBrandsStyles from './HomeBrands.module.scss';
 
 
 function HomeBrands() {
@@ -16,14 +17,20 @@ function HomeBrands() {
     const brandsIntroduction = data.pages.nodes[0].template.homePage.brandsIntroduction;
 
     return (
-        <>
-        <h1>{brandsHeading}</h1>
-        <div dangerouslySetInnerHTML={{__html: brandsIntroduction}}></div>
-        
-        {data.pages.nodes[0].template.homePage.brandLogos.map(({ brandLogo }) => {
-            return <img src={brandLogo.mediaItemUrl} alt="" />
-        })}  
-        </>      
+        <div className={HomeBrandsStyles.home__brands}>
+            <h3>{brandsHeading}</h3>
+            <div dangerouslySetInnerHTML={{__html: brandsIntroduction}}></div>
+            
+            <div className={HomeBrandsStyles.home__brandsLogos}>
+            {data.pages.nodes[0].template.homePage.brandLogos.map(({ brandLogo }) => {
+                return (
+                    <figure className={HomeBrandsStyles.home__brandLogo}>
+                        <img src={brandLogo.mediaItemUrl} alt="" />
+                    </figure>
+                )
+            })}  
+            </div>
+        </div>
     )
 }
 

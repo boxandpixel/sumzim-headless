@@ -23,7 +23,9 @@ function HomeFeaturedCards() {
                 return (
                     <div className={homeFeaturedCardStyles}>
                         <h4>{featuredCardTitle}</h4>
-                        <img src={featuredCardImage.mediaItemUrl} alt="" />
+                        <figure>
+                            <img src={featuredCardImage.sourceUrl} alt="" />
+                        </figure>
                         <div dangerouslySetInnerHTML={{__html: featuredCardDetail}}></div>
                         <a href={featuredCardLink.url} className={homeFeaturedCardButtons}>{featuredCardLink.title}</a>
                     </div>
@@ -31,18 +33,6 @@ function HomeFeaturedCards() {
             })}            
         </div>
     )
-
-
-    // return data.pages.nodes[0].template.homePage.featuredCards.map(({ featuredCardTitle, featuredCardImage, featuredCardDetail, featuredCardLink }) => {
-    //     return (
-    //         <div className={HomeFeaturedCardsStyles.home__featuredCard}>
-    //             <h3>{featuredCardTitle}</h3>
-    //             <img src={featuredCardImage.mediaItemUrl} alt="" />
-    //             <div dangerouslySetInnerHTML={{__html: featuredCardDetail}}></div>
-    //             <a href={featuredCardLink.url}>{featuredCardLink.title}</a>
-    //         </div>
-    //     )
-    // });
 }
 
 export default HomeFeaturedCards;

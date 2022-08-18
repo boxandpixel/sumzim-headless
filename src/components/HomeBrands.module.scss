@@ -1,0 +1,87 @@
+@import "../mixins.scss";
+
+.home__brands {
+    padding: 6rem 0;
+    width: 80vw;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h3 {
+        color: white;
+        text-align: center;
+                text-shadow: 2px 2px 2px black;
+        font-weight: 700;
+        color: white;
+    }
+
+    p {
+        color: white;
+        text-align: center;
+        text-shadow: var(--text-shadow__variable-background);
+        font-size: 1.25rem;
+        line-height: 1.5;
+        width: 60vw;
+    }
+
+    & > .home__brandsLogos {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        @include breakpoint(small) {
+            justify-content: center;
+        }
+
+        @include breakpoint(xlarge) {
+            flex-wrap: nowrap;
+        }
+
+        & > figure.home__brandLogo {
+            margin: 1rem 0 0;
+
+            @include breakpoint(small) {
+                margin: 1rem 0.5rem 0;
+            }
+
+            @include breakpoint(medium) {
+                margin: 1rem 0.5rem 0;
+            }
+
+            @include breakpoint(xlarge) {
+                margin: 0 0.5rem;
+            }
+
+            @include breakpoint(large) {
+                margin: var(--spacer) 0.5rem;
+            }
+
+
+
+            & > img {
+                border-radius: var(--border-radius);
+                border: solid 1px var(--color__primary);
+                max-width: calc(30vw - 2rem);
+                object-fit: contain;
+
+                @include breakpoint(small) {
+                    max-width: calc(20vw - 3rem); 
+                }
+
+                @include breakpoint(medium) {
+                    max-width: calc(15vw); 
+                }
+
+                @include breakpoint(large) {
+                    max-width: calc(10vw); 
+                }
+
+                @include breakpoint(xlarge) {
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+}

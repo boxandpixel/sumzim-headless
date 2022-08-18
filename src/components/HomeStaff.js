@@ -3,6 +3,8 @@ import React from 'react';
 import { useQuery } from '@apollo/client';
 import { LOAD_HOME } from '../graphql/Queries';
 import Staff from './Staff';
+import HomeStaffStyles from './HomeStaff.module.scss';
+import '../buttons.scss';
 // https://www.npmjs.com/package/react-multi-carousel
 
 
@@ -19,15 +21,14 @@ function HomeStaff() {
 
     return (
         <>
-        <h1>{staffHeading}</h1>
-        <Staff />
-        {staffLink.title}
-        {staffLink.url}
-        
-        {/* {data.pages.nodes[0].template.homePage.brandLogos.map(({ brandLogo }) => {
-            return <img src={brandLogo.mediaItemUrl} alt="" />
-        })}   */}
-        </>      
+            <div className={HomeStaffStyles.home__staff}>
+                <h2>{staffHeading}</h2>
+                <div className={HomeStaffStyles.home__staffSlides}>
+                    <Staff />
+                    <a href={staffLink.url} className={`button button--secondary`}>{staffLink.title}</a>
+                </div>
+            </div>
+        </>
     )
 }
 

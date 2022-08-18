@@ -5,7 +5,7 @@ import HomeTheDifference from './HomeTheDifference';
 import HomeCircleFeatures from './HomeCircleFeatures';
 import HomeBrands from './HomeBrands';
 import HomeStaff from './HomeStaff';
-import HomeContentFeatures from './HomeContentFeatures';
+// import HomeContentFeatures from './HomeContentFeatures';
 import HomePageStyles from './HomePage.module.scss';
 
 
@@ -37,9 +37,9 @@ function HomePage() {
         <HomeCircleFeatures />
       </div>
 
-      <div class={HomePageStyles.home__section}>
+      {/* <div class={HomePageStyles.home__section}>
         <HomeContentFeatures />
-      </div>
+      </div> */}
 
       <div class={HomePageStyles.home__section}>
         <HomeBrands />

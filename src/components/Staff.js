@@ -4,6 +4,7 @@ import { useQuery } from '@apollo/client';
 import { LOAD_STAFF } from '../graphql/Queries';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import HomeStaffStyles from './HomeStaff.module.scss';
 
 
 function Staff() {
@@ -14,34 +15,50 @@ function Staff() {
 
     console.log(data);
 
-    const isFeatured = data.allStaff.nodes.filter(({staff}) => staff.isFeatured === true).map(({staff, title}) => {
+    const isFeatured = data.allStaff.nodes.filter(({staff}) => staff.isFeatured === true).map(({staff, title, link}) => {
         return (
             <>
-            <div key={staff}>
-                <img src={staff.thumbnailImage.mediaItemUrl} alt="" />
-                <h3>{title}</h3>
+            <div key={staff} className={HomeStaffStyles.home__staffSlide}>
+                <a href={link}>
+                    <figure>
+                        <img src={staff.thumbnailImage.mediaItemUrl} alt="" />
+                        <figcaption>{title}</figcaption>
+                    </figure>
+                </a>
             </div>                 
             </>
         )
     });  
 
-    const isWOF = data.allStaff.nodes.filter(({staff}) => staff.isWallOfFame !== null).map(({staff, title}) => {
+    const isWOF = data.allStaff.nodes.filter(({staff}) => staff.isWallOfFame !== null).map(({staff, title, link}) => {
         return (
             <>
-            <div key={staff}>
-                <img src={staff.thumbnailImage.mediaItemUrl} alt="" />
-                <h3>{title}</h3>
-            </div>                 
+            <div key={staff} className={HomeStaffStyles.home__staffSlide}>
+                <a href={link}>
+                    <figure className={HomeStaffStyles.staffWof}>
+                        <div className={HomeStaffStyles.staffWof__Banner}>
+                            <span>SZ Wall</span>
+                            <span>of Fame</span>
+                        </div>                        
+                        <img src={staff.thumbnailImage.mediaItemUrl} alt="" />
+                        <figcaption>{title}</figcaption>
+                    </figure>
+                </a>
+            </div>                
             </>
         )            
     })
 
-    const isNotFeaturedNotWOF = data.allStaff.nodes.filter(({staff}) => staff.isWallOfFame === null && staff.isFeatured !== true).map(({staff, title}) => {
+    const isNotFeaturedNotWOF = data.allStaff.nodes.filter(({staff}) => staff.isWallOfFame === null && staff.isFeatured !== true).map(({staff, title, link}) => {
         return (
             <>
-            <div key={staff}>
-                <img src={staff.thumbnailImage.mediaItemUrl} alt="" />
-                <h3>{title}</h3>
+            <div key={staff} className={HomeStaffStyles.home__staffSlide}>
+                <a href={link}>
+                    <figure>
+                        <img src={staff.thumbnailImage.mediaItemUrl} alt="" />
+                        <figcaption>{title}</figcaption>
+                    </figure>
+                </a>
             </div>                 
             </>
         )
@@ -71,7 +88,7 @@ function Staff() {
     };    
 
     return (
-        <Carousel responsive={responsive}>
+        <Carousel responsive={responsive} infinite={true}>
             {isFeatured}
             {isNotFeaturedNotWOF}
             {isWOF}

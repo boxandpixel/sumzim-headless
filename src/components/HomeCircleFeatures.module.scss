@@ -1,0 +1,207 @@
+@import "../mixins.scss";
+
+.home__circleFeatures {
+    height: 180vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+    overflow-y: hidden;
+
+    @include breakpoint(medium) {
+        height: 140vh;
+    }
+
+    @include breakpoint(medium) {
+        display: block;
+    }
+
+    .home__circleAnchor {
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        width: 10px;
+        height: 10px;
+        z-index: 4;
+
+        @include breakpoint(medium) {
+            top: 50%;
+        }
+    }
+
+    & > .home__circleFeatureWrap {
+        @include breakpoint(medium) {
+            position: absolute;
+            top: calc((150vh / 2) - (32rem / 2) - (32rem / 2));
+            left: calc(50% - (32rem / 2));
+            height: 1024px;
+            pointer-events: none;
+        }
+
+        & > .home__circleFeature {
+            background: hsla(0, 0, 100%, 0.9);
+            border: solid 1px var(--color__primary);
+            border-radius: calc(20rem / 2);
+            width: 20rem;
+            height: 20rem;
+            padding: 3rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            z-index: 2;
+
+            @include breakpoint(medium) {
+                width: 32rem;
+                height: 32rem;
+                border-radius: calc(32rem / 2);
+                padding: 4rem;
+                margin-bottom: 0;
+                position: relative;
+                z-index: 9999;
+            }
+
+            & > blockquote {
+                font-size: 1.1rem;
+                color: black;
+                margin-bottom: 0;
+                width: calc(20rem - 4rem);
+
+                @include breakpoint(medium) {
+                    font-size: 1.5rem;
+                    width: auto;
+                }
+
+                &::before {
+                    font-size: 4rem;
+                    left: 1rem;
+
+                    @include breakpoint(medium) {
+                        font-size: 8rem;
+                        top: -1rem;
+                        left: -1rem;
+                    }
+                }
+            }
+        }
+
+        &:nth-of-type(2) {
+            & > .home__circle-feature {
+                &:nth-of-type(1) {
+                    &[data-aos="example-anim3"] {
+                        transform: rotate(0deg);
+                        transition-property: transform;
+                                        
+                        &.aos-animate {
+                            transform: rotate(0);
+
+                            @include breakpoint(medium) {
+                                transform: rotate(-120deg);
+                            }
+                        }
+                    }
+                }
+            }
+
+            &[data-aos="example-anim2"] {
+                transform: rotate(-45deg);
+                transition-property: transform;
+
+                @include breakpoint(medium) {
+                    transform: rotate(0deg);
+                }
+                                
+                &.aos-animate {
+                    transform: rotate(0deg);
+
+                    @include breakpoint(medium) {
+                        transform: rotate(120deg);
+                    }
+                }
+            }
+        }
+
+        &:nth-of-type(3) {
+            & > .home__circle-feature {
+                &:nth-of-type(1) {
+                    &[data-aos="example-anim3"] {
+                        transform: rotate(0);
+                        transition-property: transform;
+
+                        @include breakpoint(medium) {
+                            transform: rotate(-120deg);
+                        }
+                                        
+                        &.aos-animate {
+                            transform: rotate(0);
+
+                            @include breakpoint(medium) {
+                                transform: rotate(-240deg);
+                            }
+                        }
+                    }
+                }
+            }
+
+            &[data-aos="example-anim2"] {
+                transform: rotate(-45deg);
+                transition-property: transform;
+
+                @include breakpoint(medium) {
+                    transform: rotate(120deg);
+                }
+                                
+                &.aos-animate {
+                    transform: rotate(0deg);
+
+                    @include breakpoint(medium) {
+                        transform: rotate(240deg);
+                    }
+                }
+            }
+        }
+
+        &:nth-of-type(4) {
+            & > .home__circle-feature {
+                &:nth-of-type(1) {
+                    &[data-aos="example-anim3"] {
+                        transform: rotate(0deg);
+                        transition-property: transform;
+
+                        @include breakpoint(medium) {
+                            transform: rotate(-240deg);
+                        }
+                                        
+                        &.aos-animate {
+                            transform: rotate(0deg);
+
+                            @include breakpoint(medium) {
+                                transform: rotate(-360deg);
+                            }
+                        }
+                    }
+                }
+            }
+
+            &[data-aos="example-anim2"] {
+                transform: rotate(-45deg);
+                transition-property: transform;
+
+                @include breakpoint(medium) {
+                    transform: rotate(240deg);
+                }
+                                
+                &.aos-animate {
+                    transform: rotate(0deg);
+
+                    @include breakpoint(medium) {
+                        transform: rotate(360deg);
+                    }
+                }
+            }
+        }
+    }
+}

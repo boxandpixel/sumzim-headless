@@ -1,0 +1,88 @@
+@import "../mixins.scss";
+
+    .home__serviceIcons {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        @include breakpoint(large) {
+            flex-wrap: nowrap;
+        }
+
+        .home__serviceIcon {
+            margin: calc(var(--spacer) * 0.5);
+            padding: calc(var(--spacer) * 0.5);
+            border: solid 0.1ch var(--color__primary);
+            background: white;
+            border-radius: var(--border-radius);
+            max-width: 12.5rem;
+            display: flex;
+            justify-content: center;
+            width: 100px;
+            height: 140px;
+
+            @include breakpoint(medium) {
+                margin: var(--spacer);
+                padding: var(--spacer);
+                width: 200px;
+                height: 200px;
+            }
+
+            @include breakpoint(large) {
+                margin: 0 var(--spacer);
+            }
+
+            & > a {
+                text-align: center;
+                display: block;
+                text-decoration: none;
+
+                & > img {
+                    display: inline-block;
+                    width: 72px;
+                    height: 72px;
+                    object-fit: contain;
+
+                    @include breakpoint(medium) {
+                        width: 124px;
+                        height: 124px;
+                    }
+                }
+
+                figcaption {
+                    font-size: 0.75rem;
+                    font-weight: 700;
+                    color: var(--color__primary);
+                    position: relative;
+                    text-transform: uppercase;
+                    display: inline-block;
+
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        left: 0;
+                        width: 0;
+                        bottom: 1px;
+                        height: 0.1875rem;
+                        transition: width 0.3s ease-out;
+                        background: var(--color__primary);
+                    }
+
+                    @include breakpoint(medium) {
+                        font-size: 1rem;
+                    }
+                }
+            }
+
+            &:hover {
+                & > a > figcaption {
+                    &::before {
+                        @include breakpoint(medium) {
+                            left: 0;
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }

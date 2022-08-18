@@ -73,6 +73,7 @@ export const LOAD_HOME = gql`
     featuredCardTitle
     featuredCardImage {
       mediaItemUrl
+      sourceUrl(size: MEDIUM)
     }
     featuredCardDetail
     featuredCardLink {
@@ -144,6 +145,7 @@ query GetStaff {
         isFeatured
         isWallOfFame
       }
+      link
     }
   } 
 }`
