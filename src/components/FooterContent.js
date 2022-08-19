@@ -2,6 +2,7 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import { LOAD_FOOTER } from '../graphql/Queries';
+import FooterContentStyles from './FooterContent.module.scss';
 
 
 function FooterContent() {
@@ -17,15 +18,18 @@ function FooterContent() {
     const ancillaryInformation = data.footerContent.footerContent.ancillaryInformation;
 
     return (
-        <div>
-            &copy; Copyright {Year}, Summers &amp; Zim's
+        <>
+        
+        <footer className={FooterContentStyles.siteFooter}>
             <div>
+                <p>&copy; Copyright {Year}, Summers &amp; Zim's</p>
                 <div dangerouslySetInnerHTML={{__html: addressInformation}}></div>
             </div>
-            <div>
+            <div className={FooterContentStyles.footer__ancillary}>
                 <div dangerouslySetInnerHTML={{__html: ancillaryInformation}}></div>
             </div>
-        </div>
+        </footer>
+        </>
     )
 }
 

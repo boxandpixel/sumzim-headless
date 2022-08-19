@@ -7,6 +7,7 @@ import HomeBrands from './HomeBrands';
 import HomeStaff from './HomeStaff';
 // import HomeContentFeatures from './HomeContentFeatures';
 import HomePageStyles from './HomePage.module.scss';
+import HomeBackGroundMedia from './HomeBackgroundMedia';
 
 
 // Template_HomePage_Homepage
@@ -44,6 +45,8 @@ function HomePage() {
       <div class={HomePageStyles.home__section}>
         <HomeBrands />
       </div>
+
+      <HomeBackGroundMedia />
     </>
   )
 
