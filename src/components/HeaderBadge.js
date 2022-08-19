@@ -7,16 +7,18 @@ import HeaderBadgeStyles from './HeaderBadge.module.scss';
 function HeaderBadge() {
     const { loading, error, data } = useQuery(LOAD_HEADER);
 
-    const date = new Date();
-    const [ years, setYears ] = useState(date);
-
     // Update YOE every minute
     useEffect(() => {
         const interval = setInterval(() => setYears(Date.now()), 3600000);
         return () => {
             clearInterval(interval);
         };
-    }, []);  
+    }, []);      
+
+    const date = new Date();
+    const [ years, setYears ] = useState(date);
+
+
 
     if (loading) return <p>Loading...</p>;
     if (error) return console.log(`Error: ${error.message}`);
